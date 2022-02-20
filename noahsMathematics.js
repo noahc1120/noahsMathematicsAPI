@@ -116,7 +116,7 @@ function tanAdjacentSideFormula(opp, angle) {
 // return {string} - returns the angle measure with the degrees symbol
 function inverseSineFormula(opp, hyp) {
     if ((opp != undefined) && (hyp != undefined)) {
-        return Math.asin(opp / hyp) + "°";
+        return Math.floor(Math.asin(opp / hyp)) + "°";
     } else {
         return "Invalid Input";
     }
@@ -128,7 +128,7 @@ function inverseSineFormula(opp, hyp) {
 // return {string} - returns the angle measure with the degrees symbol
 function inverseCosineFormula(adj, hyp) {
     if ((adj != undefined) && (hyp != undefined)) {
-        return Math.acos(adj / hyp) + "°";
+        return Math.floor(Math.acos(adj / hyp)) + "°";
     } else {
         return "Invalid Input";
     }
@@ -140,13 +140,13 @@ function inverseCosineFormula(adj, hyp) {
 // return {string} - returns the angle measure with the degrees symbol
 function inverseTangentFormula(opp, adj) {
     if ((opp != undefined) && (adj != undefined)) {
-        return Math.atan(opp / adj) + "°";
+        return Math.floor(Math.atan(opp / adj)) + "°";
     } else {
         return "Invalid Input";
     }
 }
 
-// returns the side length of a missing side using two angle measures and one of their associated sides
+// returns the side length of a missing side using two angle measures and one of their associated sides using the Law of Sines
 // x {number} - the side length of angle X (Opposite to it)
 // X {number} - the angle measure, opposite to x, it's side
 // Y {number} - the angle measure opposite the side that is unknown
@@ -154,6 +154,32 @@ function inverseTangentFormula(opp, adj) {
 function lawOfSinesSideFormula(x, X, Y) {
     if ((x != undefined) && (X != undefined) && (Y != undefined)) {
         return (Math.sin(Y) * x) / Math.sin(X);
+    } else {
+        return "Invalid Input";
+    }
+}
+
+// returns the angle measure of a missing angle using two side lengths and one of their associated angles using the Law of Sines
+// x {number} - the side length of angle X (Opposite to it)
+// X {number} - the angle measure, opposite to x, it's side
+// y {number} - the side length, opposite to the missing angle measure
+// return {string} - returns the angle measure of side y, with the degrees symbol
+function lawOfSinesAngleFormula(x, X, y) {
+    if ((x != undefined) && (X != undefined) && (y != undefined)) {
+        return Math.floor((Math.sin(X) * y) / x) + "°";
+    } else {
+        return "Invalid Input";
+    }
+}
+
+// returns the side length of a missing side, using two side lengths and an the associated angle measure to the missing side, using the Law of Cosines
+// b {number} - a known side length
+// c {number} - a known side length
+// A {number} - the angle measure of the missing side (Opposite to it)
+// return {number} - returns the unknown side length, opposite to angle A
+function lawOfCosinesSideFormula(b, c, A) {
+    if ((b != undefined) && (c != undefined) && (A != undefined)) {
+        return Math.sqrt((b ** 2) + (c ** 2) - 2(b)(c) * Math.cos(A));
     } else {
         return "Invalid Input";
     }
