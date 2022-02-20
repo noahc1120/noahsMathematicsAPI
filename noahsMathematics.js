@@ -179,7 +179,7 @@ function lawOfSinesAngleFormula(x, X, y) {
 // return {number} - returns the unknown side length, opposite to angle A
 function lawOfCosinesSideFormula(b, c, A) {
     if ((b != undefined) && (c != undefined) && (A != undefined)) {
-        return Math.sqrt((b ** 2) + (c ** 2) - 2(b)(c) * Math.cos(A));
+        return Math.sqrt(squared(b) + squared(c) - 2(b)(c) * Math.cos(A));
     } else {
         return "Invalid Input";
     }
