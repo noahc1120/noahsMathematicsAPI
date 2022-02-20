@@ -184,3 +184,10 @@ function lawOfCosinesSideFormula(b, c, A) {
         return "Invalid Input";
     }
 }
+
+// returns the square of a given number
+// x {number} - the number you want to square
+// return {number} - returns x multiplied by itself 
+function squared(x) {
+    return x * x;
+}
